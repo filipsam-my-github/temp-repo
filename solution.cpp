@@ -17,11 +17,9 @@ float Abs(float number){
 
 
 
-int Pow(int f_num, int f_power) {
+int Pow(int num, int power) {
   int result = 1;
 
-  int num = f_num;
-  int power = f_power;
 
   while (power > 0) {
     if (power % 2 == 1) {
