@@ -21,13 +21,16 @@ int Pow(int num, int power) {
   int result = 1;
 
 
-  for (int i = 0; i < power; i++){
-    result *= num;
+  while (power > 0) {
+    if (power % 2 == 1) {
+      result *= num;
+    }
+    power /= 2;
+    num *= num;
   }
 
-
+  return result;
 }
-
 float Floor(float number){
   return static_cast<float>((static_cast<int>(number)));
 }
@@ -69,6 +72,7 @@ void PrintResults(vector<float> numbers_from_equsion, string type_of_operation, 
 
   if (absolut_val){
     cout << "wynik " << Abs(result) << endl;
+    return;
   }
   cout << "wynik " << result << endl;
 }
