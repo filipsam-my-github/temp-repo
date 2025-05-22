@@ -21,15 +21,11 @@ int Pow(int num, int power) {
   int result = 1;
 
 
-  while (power > 0) {
-    if (power % 2 == 1) {
-      result *= num;
-    }
-    power /= 2;
-    num *= num;
+  for (int i = 0; i < power; i++){
+    result *= num;
   }
 
-  return result;
+
 }
 
 float Floor(float number){
