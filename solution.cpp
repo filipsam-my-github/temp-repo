@@ -53,6 +53,11 @@ void PrintResults(vector<float> numbers_from_equsion, string type_of_operation, 
     result = numbers_from_equsion[0] * numbers_from_equsion[1];
   }
   else if (type_of_operation == "/"){
+    if (numbers_from_equsion[1] == 0){
+      cout << "niemozna dzielic przez zero " << endl;
+      return;
+    }
+    
     result = numbers_from_equsion[0] / numbers_from_equsion[1];
   }
   else if (type_of_operation == "^"){
@@ -118,4 +123,3 @@ int main(){
   }
   return 0;
 }
-
