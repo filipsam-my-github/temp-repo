@@ -6,8 +6,6 @@ using namespace std;
 
 
 
-
-
 float Abs(float number){
   if (number >= 0){
     return number;
@@ -19,11 +17,11 @@ float Abs(float number){
 
 
 
-float Pow(float f_num, float f_power) {
+int Pow(int f_num, int f_power) {
   int result = 1;
 
-  int num = static_cast<int>(f_num);
-  int power = static_cast<int>(f_num);
+  int num = f_num;
+  int power = f_power;
 
   while (power > 0) {
     if (power % 2 == 1) {
@@ -33,7 +31,7 @@ float Pow(float f_num, float f_power) {
     num *= num;
   }
 
-  return static_cast<int>(result);
+  return result;
 }
 
 float Floor(float number){
@@ -60,7 +58,7 @@ void PrintResults(vector<float> numbers_from_equsion, string type_of_operation, 
     result = numbers_from_equsion[0] / numbers_from_equsion[1];
   }
   else if (type_of_operation == "^"){
-    result = Pow(numbers_from_equsion[0], numbers_from_equsion[1]);
+    result = static_cast<float>(Pow(static_cast<int>(numbers_from_equsion[0]), static_cast<int>(numbers_from_equsion[1])));
   }
   else if (type_of_operation == "srednia"){
     result = (numbers_from_equsion[0] + numbers_from_equsion[1])/2;
@@ -80,6 +78,7 @@ int main(){
   //komendy uzytkownika zaiwerajace cala 
   string operation;
   string in_absolute;
+  
 
 
   float num1 = 0;
@@ -91,37 +90,34 @@ int main(){
   
   while (true)
   {
-  cout << "Podaj dwie liczby\n";
-  cin >> num1 >> num2;
+    cout << "Podaj dwie liczby\n";
+    cin >> num1 >> num2;
 
 
-  vector<float> numbers = {num1,num2};
+    vector<float> numbers = {num1,num2};
 
-  cout << "Podaj operacje (q wyjscia)\n";
-  cin >> operation;
-  cin.clear();
+    cout << "Podaj operacje (q wyjscia)\n";
+    cin >> operation;
+    cin.clear();
 
 
-  if (operation == "q" || operation == "Q"){
-    break;
-    return 0;
+    if (operation == "q" || operation == "Q"){
+      break;
+      return 0;
+    }
+
+    cout << "czy ma byc wartosc bezwzgledna (1-tak 0-nie)" << endl;
+    cin >> in_absolute;
+    absolut = false;
+    if (in_absolute == "1"){
+      absolut = true;
+    }
+    cin.clear();
+    PrintResults(numbers, operation, absolut);
+
+    
+
   }
-
-  cout << "czy ma byc wartosc bezwzgledna (1-tak 0-nie)" << endl;
-  cin >> in_absolute;
-  absolut = false;
-  if (in_absolute == "1"){
-    absolut = true;
-  }
-  cin.clear();
-  PrintResults(numbers, operation, absolut);
-
-   
-
-  }
-
   return 0;
-
-
 }
 
